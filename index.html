@@ -1,3 +1,7 @@
+
+Survey · HTML
+Copiar
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -410,9 +414,9 @@ function submitToSheets() {
       urgency:    answers.urgency    || '',
       source:     document.referrer  || 'direct'
     })
-  }).catch(() => {}).finally(() => {
-    window.location.href = 'https://calendar.app.google/rVLPkBh76oor7gaw6';
-  });
+  }).catch(() => {});
+  // Redirect immediately, don't wait for the fetch to complete
+  window.location.href = 'https://calendar.app.google/rVLPkBh76oor7gaw6';
 }
 
 document.addEventListener('keydown', e => { if (e.key === 'Enter' && e.metaKey) goNext(); });
