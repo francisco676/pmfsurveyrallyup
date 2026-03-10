@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RallyUp - EGC Diagnostic Survey</title>
+<title>EGC Diagnostic Survey | RallyUp</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -41,19 +41,23 @@
     padding: 5px 14px; border-radius: 50px; margin-top: 12px;
   }
   .time-badge::before { content: ''; display: inline-block; width: 6px; height: 6px; background: var(--lime); border-radius: 50%; }
+
   .progress-wrap { max-width: 600px; margin: 28px auto 0; padding: 0 24px; }
   .progress-bar { height: 3px; background: rgba(255,255,255,0.06); border-radius: 4px; overflow: hidden; }
   .progress-fill { height: 100%; width: 0%; background: var(--lime); border-radius: 4px; transition: width 0.5s cubic-bezier(0.22,1,0.36,1); }
   .progress-label { display: flex; justify-content: space-between; margin-top: 8px; font-size: 12px; color: var(--gray); font-weight: 500; }
+
   .container { max-width: 600px; margin: 0 auto; padding: 24px 24px 120px; }
   .section { display: none; animation: fadeIn 0.35s ease; }
   .section.active { display: block; }
   @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
   .section-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--lime); margin-bottom: 6px; }
   .section-title { font-size: 22px; font-weight: 700; margin-bottom: 4px; letter-spacing: -0.02em; }
   .section-desc { font-size: 14px; color: var(--gray); margin-bottom: 28px; line-height: 1.6; }
   .question { margin-bottom: 28px; }
   .q-label { font-size: 15px; font-weight: 600; margin-bottom: 6px; }
+
   input[type="email"], input[type="text"] {
     width: 100%; background: var(--surface); border: 1px solid var(--border);
     border-radius: 10px; padding: 14px 16px; color: var(--white);
@@ -61,6 +65,7 @@
   }
   input[type="email"]:focus, input[type="text"]:focus { border-color: rgba(216,236,106,0.4); }
   input::placeholder { color: var(--gray); }
+
   .chips { display: flex; flex-wrap: wrap; gap: 8px; }
   .chip {
     padding: 10px 18px; border-radius: 50px;
@@ -70,8 +75,11 @@
   }
   .chip:hover { border-color: var(--lime-border); background: var(--lime-dim); }
   .chip.selected { background: var(--lime-dim); border-color: var(--lime); color: var(--lime); }
+
   .field-error { font-size: 13px; color: #f87171; margin-top: 10px; display: none; }
   .field-error.show { display: block; }
+
+  /* WELCOME */
   .welcome { text-align: center; padding: 40px 0 0; }
   .welcome h2 { font-size: 28px; font-weight: 800; margin-bottom: 12px; letter-spacing: -0.03em; }
   .welcome p { color: var(--gray); font-size: 16px; max-width: 420px; margin: 0 auto 32px; line-height: 1.7; }
@@ -79,6 +87,55 @@
   .wc { padding: 16px; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; }
   .wc h4 { font-size: 14px; font-weight: 600; margin-bottom: 2px; }
   .wc p { font-size: 12px; color: var(--gray); margin: 0; }
+
+  /* CONFIRMATION SCREEN */
+  #confirmation-screen {
+    display: none;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+    animation: fadeIn 0.4s ease;
+  }
+  .confirm-inner {
+    text-align: center;
+    padding-top: 48px;
+  }
+  .confirm-check {
+    width: 72px; height: 72px; border-radius: 50%;
+    background: var(--lime-dim); border: 2px solid var(--lime);
+    display: inline-flex; align-items: center; justify-content: center;
+    font-size: 30px; color: var(--lime); margin-bottom: 24px;
+  }
+  .confirm-inner h2 {
+    font-size: 28px; font-weight: 800; letter-spacing: -0.03em; margin-bottom: 12px;
+  }
+  .confirm-inner h2 span { color: var(--lime); }
+  .confirm-inner p {
+    color: var(--gray); font-size: 15px; max-width: 420px;
+    margin: 0 auto 32px; line-height: 1.7;
+  }
+  .confirm-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-left: 3px solid var(--lime); border-radius: 10px;
+    padding: 20px 24px; text-align: left; font-size: 14px;
+    color: var(--gray); margin-bottom: 32px; line-height: 1.75;
+  }
+  .confirm-card strong { color: var(--white); display: block; margin-bottom: 6px; font-size: 15px; }
+  .confirm-card ul { padding-left: 18px; }
+  .confirm-card li { margin-bottom: 4px; }
+  .book-btn {
+    display: inline-block;
+    background: var(--lime); color: #09090b;
+    font-family: inherit; font-weight: 800; font-size: 16px;
+    padding: 16px 40px; border-radius: 12px;
+    text-decoration: none; letter-spacing: -0.01em;
+    transition: background 0.15s, transform 0.15s;
+    border: none; cursor: pointer;
+  }
+  .book-btn:hover { background: #c8dc5a; transform: translateY(-2px); }
+  .confirm-note { margin-top: 14px; font-size: 13px; color: var(--gray); }
+
+  /* NAV BAR */
   .nav-bar {
     position: fixed; bottom: 0; left: 0; right: 0;
     background: rgba(9,9,11,0.94); backdrop-filter: blur(16px);
@@ -95,41 +152,65 @@
   .btn-submit { background: var(--lime); color: #09090b; flex: 1; max-width: 240px; font-size: 14px; }
   .btn-submit:hover { background: #c8dc5a; }
   .btn-submit:disabled { opacity: 0.6; cursor: default; transform: none; }
+
   @media(max-width: 480px) {
     .welcome-cards { grid-template-columns: 1fr; }
     .header h1 { font-size: 21px; }
     .section-title { font-size: 20px; }
     .chip { font-size: 13px; padding: 10px 14px; }
+    .book-btn { font-size: 15px; padding: 14px 28px; }
   }
 </style>
 </head>
 <body>
 
-<div class="header">
-  <div class="logo">Rally<span>Up</span></div>
-  <h1>Which EGC play fits your company?</h1>
-  <p>Answer 5 quick questions and we'll book a free 20-minute EGC Diagnostic call with you. No pitch, just a clear recommendation.</p>
-  <div class="time-badge">Takes 90 seconds</div>
-</div>
+<div id="survey-wrapper">
+  <div class="header" id="survey-header">
+    <div class="logo">Rally<span>Up</span></div>
+    <h1>Which EGC play fits your company?</h1>
+    <p>Answer 5 quick questions and we'll book a free 20-minute EGC Diagnostic call with you. No pitch, just a clear recommendation.</p>
+    <div class="time-badge">Takes 90 seconds</div>
+  </div>
 
-<div class="progress-wrap">
-  <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
-  <div class="progress-label">
-    <span id="sectionLabel">Welcome</span>
-    <span id="progressPct">0%</span>
+  <div class="progress-wrap" id="progress-wrap">
+    <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+    <div class="progress-label">
+      <span id="sectionLabel">Welcome</span>
+      <span id="progressPct">0%</span>
+    </div>
+  </div>
+
+  <div class="container" id="app"></div>
+
+  <div class="nav-bar" id="navBar">
+    <button class="btn btn-ghost" id="btnBack" onclick="goBack()">Back</button>
+    <button class="btn btn-primary" id="btnNext" onclick="goNext()">Get Started</button>
   </div>
 </div>
 
-<div class="container" id="app"></div>
-
-<div class="nav-bar" id="navBar">
-  <button class="btn btn-ghost" id="btnBack" onclick="goBack()">Back</button>
-  <button class="btn btn-primary" id="btnNext" onclick="goNext()">Get Started</button>
+<!-- CONFIRMATION SCREEN (shown after submit) -->
+<div id="confirmation-screen">
+  <div class="confirm-inner">
+    <div class="confirm-check">&#10003;</div>
+    <h2>Answers saved. <span>Time to book.</span></h2>
+    <p>Click below to pick a time that works for you. We'll come prepared with a specific recommendation based on your answers. No pitch, just a clear picture you can take to your team.</p>
+    <div class="confirm-card">
+      <strong>What we cover on the call:</strong>
+      <ul>
+        <li>Which of the 3 EGC plays fits your company right now</li>
+        <li>What quick wins look like in the first 30 days</li>
+        <li>What's realistically in the way</li>
+      </ul>
+    </div>
+    <a href="https://calendar.app.google/rVLPkBh76oor7gaw6" target="_blank" class="book-btn">
+      Book my free 20-minute call &rarr;
+    </a>
+    <p class="confirm-note">Opens Google Calendar. Pick whatever slot works for you.</p>
+  </div>
 </div>
 
 <script>
 const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwZxRPNxI__JZEe2daoOzlsEZ4ZXOvX2MHOmrI1-Z_pz1D8d2DkFdANwApo1nQhKWV4/exec';
-const BOOKING_URL = 'https://calendar.app.google/rVLPkBh76oor7gaw6';
 
 const sections = [
   {
@@ -215,11 +296,11 @@ const sections = [
     render: () => `
       <div class="section-label">Question 5 of 5</div>
       <div class="section-title">Last one.</div>
-      <div class="section-desc">Where should we reach out to book your free 20-minute EGC Diagnostic call?</div>
+      <div class="section-desc">Where should we reach out to confirm your free 20-minute EGC Diagnostic call?</div>
       <div class="question">
         <div class="q-label">Work email</div>
         <input type="email" id="emailInput" placeholder="you@company.com" autocomplete="email">
-        <div class="field-error" id="err-email">Please enter a valid email to claim your free call.</div>
+        <div class="field-error" id="err-email">Please enter a valid email to continue.</div>
       </div>
       <div class="question">
         <div class="q-label" style="font-weight:400; color:var(--gray); font-size:14px;">Company name <span style="opacity:0.5">(optional)</span></div>
@@ -235,7 +316,6 @@ function render() {
   const app = document.getElementById('app');
   app.innerHTML = `<div class="section active">${sections[current].render()}</div>`;
 
-  // Restore chip selections
   app.querySelectorAll('.chips').forEach(container => {
     const key = container.dataset.key;
     if (answers[key]) {
@@ -252,11 +332,10 @@ function render() {
     });
   });
 
-  // Restore text inputs
-  if (current === sections.length - 1) {
-    const emailInput = document.getElementById('emailInput');
+  if (sections[current].id === 'email') {
+    const emailInput   = document.getElementById('emailInput');
     const companyInput = document.getElementById('companyInput');
-    if (emailInput && answers.email) emailInput.value = answers.email;
+    if (emailInput && answers.email)     emailInput.value   = answers.email;
     if (companyInput && answers.company) companyInput.value = answers.company;
   }
 
@@ -266,10 +345,10 @@ function render() {
 
 function updateUI() {
   const total = sections.length - 1;
-  const pct = current === 0 ? 0 : Math.round((current / total) * 100);
-  document.getElementById('progressFill').style.width = pct + '%';
-  document.getElementById('progressPct').textContent = pct + '%';
-  document.getElementById('sectionLabel').textContent = sections[current].label;
+  const pct   = current === 0 ? 0 : Math.round((current / total) * 100);
+  document.getElementById('progressFill').style.width  = pct + '%';
+  document.getElementById('progressPct').textContent   = pct + '%';
+  document.getElementById('sectionLabel').textContent  = sections[current].label;
 
   const back = document.getElementById('btnBack');
   const next = document.getElementById('btnNext');
@@ -278,16 +357,16 @@ function updateUI() {
 
   if (current === 0) {
     next.textContent = 'Get Started';
-    next.className = 'btn btn-primary';
-    next.onclick = goNext;
+    next.className   = 'btn btn-primary';
+    next.onclick     = goNext;
   } else if (current === sections.length - 1) {
-    next.textContent = 'Claim my free call';
-    next.className = 'btn btn-submit';
-    next.onclick = handleSubmit;
+    next.textContent = 'Submit answers';
+    next.className   = 'btn btn-submit';
+    next.onclick     = handleSubmit;
   } else {
     next.textContent = 'Continue';
-    next.className = 'btn btn-primary';
-    next.onclick = goNext;
+    next.className   = 'btn btn-primary';
+    next.onclick     = goNext;
   }
 }
 
@@ -314,7 +393,7 @@ function goBack() {
 function handleSubmit() {
   const emailEl   = document.getElementById('emailInput');
   const companyEl = document.getElementById('companyInput');
-  const email     = emailEl ? emailEl.value.trim() : '';
+  const email     = emailEl   ? emailEl.value.trim()   : '';
   const company   = companyEl ? companyEl.value.trim() : '';
 
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
@@ -325,37 +404,36 @@ function handleSubmit() {
   answers.email   = email;
   answers.company = company;
 
-  // Disable button to prevent double submit
+  // Disable button
   const btn = document.getElementById('btnNext');
-  btn.disabled = true;
-  btn.textContent = 'Booking...';
+  btn.disabled    = true;
+  btn.textContent = 'Saving...';
 
-  // Fire and forget - do not wait for response
+  // Post to Google Sheets (fire and forget)
   try {
     fetch(SCRIPT_URL, {
-      method: 'POST',
-      mode: 'no-cors',
+      method:  'POST',
+      mode:    'no-cors',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        timestamp: new Date().toISOString(),
-        email:     answers.email     || '',
-        company:   answers.company   || '',
-        role:      answers.role      || '',
-        situation: answers.situation || '',
-        blocker:   answers.blocker   || '',
-        urgency:   answers.urgency   || '',
-        source:    document.referrer || 'direct'
+        timestamp:  new Date().toISOString(),
+        email:      answers.email     || '',
+        company:    answers.company   || '',
+        role:       answers.role      || '',
+        situation:  answers.situation || '',
+        blocker:    answers.blocker   || '',
+        urgency:    answers.urgency   || '',
+        source:     document.referrer || 'direct'
       })
     });
   } catch(e) {}
 
-  // Redirect immediately regardless
-  window.location.href = BOOKING_URL;
+  // Show confirmation screen (user clicks the booking link themselves)
+  document.getElementById('survey-wrapper').style.display = 'none';
+  document.getElementById('navBar').style.display         = 'none';
+  document.getElementById('confirmation-screen').style.display = 'block';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
-
-document.addEventListener('keydown', e => { if (e.key === 'Enter' && e.metaKey) { if (current === sections.length - 1) { handleSubmit(); } else { goNext(); } } });
-
-render();
 </script>
 </body>
 </html>
